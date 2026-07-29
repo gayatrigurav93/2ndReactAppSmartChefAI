@@ -1,8 +1,7 @@
 import React from "react"
 import IngredientList from "./IngredientList"
 import SmartRecipe from "./SmartRecipe"
-import { HfInference } from "@huggingface/inference";
-import { getRecipeFromMistral } from "../api.js"
+import { getRecipeFromGroq } from "../api.js"
 
 
 export default function Main(){
@@ -24,7 +23,9 @@ export default function Main(){
     const[recipe,setRecipe] = React.useState("")
 // on button click to get recipe,  Async function 
     async function getRecipe (ingredients){
- const recipeMakdown = await getRecipeFromMistral(ingredients)
+    
+ const recipeMakdown = await getRecipeFromGroq(ingredients)
+ console.log("recipe markdown")
       setRecipe(recipeMakdown);
     }
     
