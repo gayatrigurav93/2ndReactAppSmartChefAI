@@ -11,7 +11,7 @@ Format your response in Markdown so it is easy to display on a web page.`
 
 //Create Hugging Face client from token
 
-const hf = new HfInference(process.env.REACT_APP_HF_TOKEN)
+const hf = new HfInference(import.meta.env.VITE_HF_TOKEN)
 
 
 //export async function to get recipe from ingredient array
@@ -26,7 +26,7 @@ const ingredientString = ingredientsArr.join(", ")
     const response = await hf.chatCompletion
     (
         {
-            model:"mistralai/Mixtral-8x7B-Instruct-v0.1",
+            model:"mistralai/Mistral-7B-Instruct-v0.3",
             messages:[
                 { role: "system", content:SYSTEM_PROMPT},
                 { role: "user" , content:`I have ${ ingredientString }

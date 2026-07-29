@@ -1,12 +1,16 @@
 import React from "react"
-import IngredientList from "./components/IngredientList"
-import SmartRecipe from "./components/SmartRecipe"
-import { getRecipeFromMistral } from "../api"
+import IngredientList from "./IngredientList"
+import SmartRecipe from "./SmartRecipe"
+import { HfInference } from "@huggingface/inference";
+import { getRecipeFromMistral } from "../api.js"
+
+
 export default function Main(){
    // let consider initial state as empty array of ingredients
  
     const[ingredients,setIngredients] = React.useState([])
  // put ingredienyslist variable = map the array to list (inside ingeliat component)
+ 
  //now create function by action on form it gets new aray of list by adding new item
   function addIng(event){
     event.preventDefault()
