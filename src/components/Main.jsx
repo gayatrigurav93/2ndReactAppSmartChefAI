@@ -21,11 +21,24 @@ export default function Main(){
 
     //asume state whether reply from Api initial reply ""
     const[recipe,setRecipe] = React.useState("")
+
+    // access recipe conatiner by useRef initial null
+    const recipeContainer =  React.useRef(null)
+
+    // for smooth scrolly use useEffect when there is recipe(i.e dependency array ) then scroll y
+
+    React.useEffect(()=> {
+        if(recipe !=="" && recipeContainer.current !==null){
+         recipeContainer.current.scrollIntoView({behavior:"smooth"})   
+        }
+    },[recipe])
+
+
 // on button click to get recipe,  Async function 
     async function getRecipe (ingredients){
     
  const recipeMakdown = await getRecipeFromGroq(ingredients)
- console.log("recipe markdown")
+// console.log("recipe markdown")
       setRecipe(recipeMakdown);
     }
     
@@ -44,6 +57,7 @@ export default function Main(){
             />}
 
            { recipe && <SmartRecipe
+           reciperef = {recipeContainer}
            recipe={recipe} />} 
         </main>
     )
