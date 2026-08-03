@@ -5,7 +5,7 @@
 
 ## ⚙️ Tech Stack
 - React
-- Hugging Face API (planned integration)
+- Groq (planned integration)
 - JavaScript (ES6+), CSS3
 
 ## 🚀 Features
